@@ -6,10 +6,15 @@ import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
+import { ChatViewerComponent } from './chat-viewer/chat-viewer.component';
+import { ChatControlsComponent } from './chat-controls/chat-controls.component';
+import { MockChatService, ChatService, IChatService } from './services/chat-service.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChatViewerComponent,
+    ChatControlsComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +23,7 @@ import { AppComponent } from './app.component';
     MaterialModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ MockChatService, ChatService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

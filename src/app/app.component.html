@@ -1,9 +1,21 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
 <div class="outerContainer">
-  <md-card class="chatContainer" style="padding:0">
+  <md-card class="chatContainer">
     <md-toolbar color="primary">
-      Test!
+      <div class="chatToolBarTitleWrapper">
+        <div class="chatToolBarTitleWrapper_title">Curdia</div>
+        <div class="chatToolBarTitleWrapper_subtitle">The <b>Cur</b>ious <b>Di</b>gital <b>A</b>ssistant</div>
+      </div>
+      <div class="chatToolBarControlsWrapper">
+        <button md-icon-button>
+            <md-icon>more_vert</md-icon>
+        </button>
+      </div>
     </md-toolbar>
+    <div class="chatMessagesContainer">
+      <app-chat-viewer></app-chat-viewer>
+    </div>
+    <div class="chatControlsContainer">
+      <app-chat-controls></app-chat-controls>
+    </div>
   </md-card>
 </div>
