@@ -1,1 +1,12 @@
-<div *ngFor="let msg of viewData.messages">{{msg.sender}}:{{msg.messageContent}}</div>
+<div class="messageBox" *ngFor="let msg of viewData.messages" [ngClass]="{'rightMessage': msg.sender == 'you', 'leftMessage': msg.sender != 'you'}">
+  <md-card>
+    <div class="msgContent">
+        {{msg.messageContent}}
+    </div>
+    <div class="msgStatus">
+        <md-icon *ngIf="msg.status == 1 && msg.sender == 'you'" fontSet="fontawesome" fontIcon="fa-clock-o"></md-icon>
+        <md-icon *ngIf="msg.status == 2 && msg.sender == 'you'" fontSet="fontawesome" fontIcon="fa-check"></md-icon>
+        <div *ngIf="msg.sender != 'you'" class="msgTime">{{msg.time | date:'jm' }}</div>
+    </div>
+  </md-card>
+</div>

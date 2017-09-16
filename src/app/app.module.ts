@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
+import { MaterialModule, MdIconRegistry } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -23,7 +23,11 @@ import { MockChatService, ChatService, IChatService } from './services/chat-serv
     MaterialModule,
     BrowserAnimationsModule
   ],
-  providers: [ MockChatService, ChatService ],
+  providers: [ MockChatService, ChatService, MdIconRegistry ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(iconRegistry: MdIconRegistry) {
+    iconRegistry.registerFontClassAlias('fontawesome', 'fa');
+  }
+ }

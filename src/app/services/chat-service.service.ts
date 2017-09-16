@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ChatMessage } from '../models/chat-message';
+import { ChatMessage, MessageStatus } from '../models/chat-message';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -17,11 +17,14 @@ export class ChatService implements IChatService {
   }
 
   sendMessage(sender: string, content: string): string {
-    this.messageHistory.push({
+    let msgSend: ChatMessage = {
       sender: sender,
       messageContent: content,
-      time: new Date()
-    });
+      time: new Date(),
+      status: MessageStatus.Sent
+    };
+
+    this.messageHistory.push(msgSend);
 
     this.http.post('api/message', {sender: 'test', message: content})
     .map((res: Response) => res.json())
@@ -29,8 +32,10 @@ export class ChatService implements IChatService {
       this.messageHistory.push({
         sender: 'Bot',
         messageContent: data['reply'],
-        time: new Date()
+        time: new Date(),
+        status: MessageStatus.Processed
       });
+      msgSend.status = MessageStatus.Processed;
     }); // need more examples/best practice?
     return 'not implemented';
   }
@@ -39,25 +44,22 @@ export class ChatService implements IChatService {
 @Injectable()
 export class MockChatService implements IChatService {
 
-  messageHistory: ChatMessage[];
+  messageHistory: ChatMessage[] = [];
   constructor() {
-    this.messageHistory = [{
-      sender: 'you',
-      messageContent: 'test',
-      time: new Date()
-    }];
    }
 
   sendMessage(_sender: string, _content: string): string {
     this.messageHistory.push({
       sender: _sender,
       messageContent: _content,
-      time: new Date()
+      time: new Date(),
+      status: MessageStatus.Processed
     });
     this.messageHistory.push({
       sender: 'Bot',
       messageContent: 'test',
-      time: new Date()
+      time: new Date(),
+      status: MessageStatus.None
     });
     return 'test';
   }

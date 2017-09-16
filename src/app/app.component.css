@@ -7,7 +7,7 @@
   .chatContainer{
     position: relative;
     top:20px;
-    max-width: 80%;
+    max-width: 60%;
     margin-left:auto;
     margin-right:auto;
     height: calc(100% - 35px);
@@ -25,6 +25,8 @@
 
 .chatContainer{
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .chatToolBarControlsWrapper{
@@ -34,4 +36,16 @@
 .chatToolBarTitleWrapper_subtitle{
   line-height: 0;
   font-size: 11px;
+}
+
+.chatMessagesContainer{
+  flex-grow:1;
+  overflow-y: scroll;
+}
+
+.chatControlsContainer{
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.chatControlsContainer app-chat-controls{
+  display: flex;
 }

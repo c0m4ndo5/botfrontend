@@ -1,0 +1,30 @@
+.leftMessage md-card{
+background-color: rgba(230, 230, 230, 0.32);
+margin-right: auto;
+}
+.rightMessage md-card{
+background-color: rgba(171, 254, 254, 0.32);
+margin-left: auto;
+}
+.messageBox{
+  margin:10px;
+  display: flex;
+}
+.messageBox md-card{
+  padding:10px 0 0 10px;
+  display: flex;
+}
+.msgContent{
+  margin-right: 15px;
+}
+.msgStatus md-icon{
+  height: initial;
+  width: initial;
+  margin: 8px 5px 0 5px;
+  font-size: 11px;
+  color:rgba(87, 87, 87, 0.78)
+}
+.msgTime{
+  font-size: 10px;
+  margin: 10px 5px 2px 0;
+}
