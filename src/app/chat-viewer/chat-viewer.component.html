@@ -1,7 +1,7 @@
 <div class="messageBox" *ngFor="let msg of viewData.messages" [ngClass]="{'rightMessage': msg.sender == 'you', 'leftMessage': msg.sender != 'you'}">
   <md-card>
-    <div class="msgContent">
-        {{msg.messageContent}}
+    <div class="msgContent" [innerHTML]="msg.messageContent">
+
     </div>
     <div class="msgStatus">
         <md-icon *ngIf="msg.status == 1 && msg.sender == 'you'" fontSet="fontawesome" fontIcon="fa-clock-o"></md-icon>
