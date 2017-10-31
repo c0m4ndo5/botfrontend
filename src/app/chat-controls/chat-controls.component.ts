@@ -8,7 +8,7 @@ import { MockChatService, ChatService, IChatService } from '../services/chat-ser
 })
 export class ChatControlsComponent implements OnInit {
   inputMsg: string;
-  constructor(private _chatService: ChatService) { }
+  constructor(private _chatService: MockChatService) { }
 
   ngOnInit() {
   }

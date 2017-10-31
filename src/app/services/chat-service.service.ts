@@ -57,7 +57,7 @@ export class MockChatService implements IChatService {
     });
     this.messageHistory.push({
       sender: 'Bot',
-      messageContent: 'test',
+      messageContent: 'test with image: <img src="https://www.banffadventures.com/DesktopModules/PTI/TileView/images/57/tb_luxury.jpg" />' ,
       time: new Date(),
       status: MessageStatus.None
     });

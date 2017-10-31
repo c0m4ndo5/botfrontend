@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewerData } from '../models/viewer-data';
 import { MockChatService, ChatService, IChatService } from '../services/chat-service.service';
+import { ChatMessage } from '../models/chat-message';
 
 @Component({
   selector: 'app-chat-viewer',
@@ -9,7 +10,7 @@ import { MockChatService, ChatService, IChatService } from '../services/chat-ser
 })
 export class ChatViewerComponent implements OnInit {
   viewData: ViewerData;
-  constructor(private chatService: ChatService) {
+  constructor(private chatService: MockChatService) {
     this.viewData = {
       messages : chatService.messageHistory
     };
@@ -17,5 +18,4 @@ export class ChatViewerComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
