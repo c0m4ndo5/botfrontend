@@ -9,12 +9,14 @@ import { AppComponent } from './app.component';
 import { ChatViewerComponent } from './chat-viewer/chat-viewer.component';
 import { ChatControlsComponent } from './chat-controls/chat-controls.component';
 import { MockChatService, ChatService, IChatService } from './services/chat-service.service';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChatViewerComponent,
-    ChatControlsComponent
+    ChatControlsComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

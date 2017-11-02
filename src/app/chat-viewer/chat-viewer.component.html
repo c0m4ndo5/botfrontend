@@ -1,9 +1,11 @@
-<div class="messageBox" *ngFor="let msg of viewData.messages" [ngClass]="{'rightMessage': msg.sender == 'you', 'leftMessage': msg.sender != 'you'}">
+<div class="messageBox" *ngFor="let msg of viewData.messages" [ngClass]="{'rightMessage': msg.sender == 'you', 'leftMessage': msg.sender != 'you',
+    'masterMessage': msg.sender == 'yuri'}">
   <md-card>
     <div class="msgContent" [innerHTML]="msg.messageContent">
 
     </div>
     <div class="msgStatus">
+        <div class="filler"></div>
         <md-icon *ngIf="msg.status == 1 && msg.sender == 'you'" fontSet="fontawesome" fontIcon="fa-clock-o"></md-icon>
         <md-icon *ngIf="msg.status == 2 && msg.sender == 'you'" fontSet="fontawesome" fontIcon="fa-check"></md-icon>
         <div *ngIf="msg.sender != 'you'" class="msgTime">{{msg.time | date:'jm' }}</div>

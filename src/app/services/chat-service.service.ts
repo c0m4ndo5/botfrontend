@@ -7,17 +7,28 @@ import 'rxjs/add/operator/map';
 export interface IChatService {
   messageHistory: ChatMessage[];
   sendMessage(sender: string, content: string): string;
+  postMessage(sender: string, content: string): void;
 }
 
 @Injectable()
 export class ChatService implements IChatService {
+
   messageHistory: ChatMessage[];
   constructor(private http: Http) {
     this.messageHistory = [];
   }
 
+  postMessage(_sender: string, _content: string): void {
+    this.messageHistory.push({
+      sender: _sender,
+      messageContent: _content,
+      time: new Date(),
+      status: MessageStatus.Processed
+    });
+  }
+
   sendMessage(sender: string, content: string): string {
-    let msgSend: ChatMessage = {
+    const msgSend: ChatMessage = {
       sender: sender,
       messageContent: content,
       time: new Date(),
@@ -48,6 +59,15 @@ export class MockChatService implements IChatService {
   constructor() {
    }
 
+   postMessage(_sender: string, _content: string): void {
+    this.messageHistory.push({
+      sender: _sender,
+      messageContent: _content,
+      time: new Date(),
+      status: MessageStatus.Processed
+    });
+  }
+
   sendMessage(_sender: string, _content: string): string {
     this.messageHistory.push({
       sender: _sender,
@@ -57,7 +77,8 @@ export class MockChatService implements IChatService {
     });
     this.messageHistory.push({
       sender: 'Bot',
-      messageContent: 'test with image: <img src="https://www.banffadventures.com/DesktopModules/PTI/TileView/images/57/tb_luxury.jpg" />' ,
+      messageContent: 'test echo mode: ' + _content,
+      // 'test with image: <img src="https://tce-live2.s3.amazonaws.com/media/media/be7a97e5-19d2-4df5-b348-a549dd5b3fe7.jpg" />' ,
       time: new Date(),
       status: MessageStatus.None
     });

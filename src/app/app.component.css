@@ -49,3 +49,6 @@
 .chatControlsContainer app-chat-controls{
   display: flex;
 }
+.chatToolBarControlsWrapper :link {
+  color:white;
+}

@@ -10,7 +10,7 @@ import { ChatMessage } from '../models/chat-message';
 })
 export class ChatViewerComponent implements OnInit {
   viewData: ViewerData;
-  constructor(private chatService: MockChatService) {
+  constructor(private chatService: ChatService) {
     this.viewData = {
       messages : chatService.messageHistory
     };
